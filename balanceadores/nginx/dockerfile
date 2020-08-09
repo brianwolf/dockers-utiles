@@ -1,9 +1,0 @@
-FROM nginx
-
-WORKDIR /etc/nginx/
-
-COPY ./src ./src
-
-EXPOSE 80
-
-CMD ./src/scripts/iniciar.sh

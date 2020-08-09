@@ -1,20 +1,27 @@
-# EJEMPLO NGINX
+# Nginx
 
-Ejemplo de uso de nginx
+> Ejemplo de Nginx
 
 ![alt text](docs/img/nginx.png)
 
+## Uso
+
+* Ejecutar `docker-compose up`
+* Ingresar en [esta url](https://localhost), al recargar la pagina varias veces el nodo debe cambiar
+
 ## Configuracion
 
-* En el archivo ***.env*** se encuentran las variables de entorno para docker
+* En el archivo `./docker-env/ambiente.env` se encuentran las variables de entorno para docker de nginx
 
 ## Volumes
 
-* **config**: configuracion del proxy
-* **logs**: logs
+* **nginx**: tiene un script para iniciar nginx con varibles de ambiente
+* **nodo-1**: tiene el index.html del server de apache
+* **nodo-2**: tiene el index.html del server de apache
 
 La forma de ejecutar dentro del docker es mediante un script, esto es para que nginx tome las variables de ambiente del archivo de config
 
-## DOCKERS
+## Paginas
 
-<https://hub.docker.com/_/nginx>
+[Nginx](https://hub.docker.com/_/nginx)
+[Httpd](https://hub.docker.com/_/httpd)

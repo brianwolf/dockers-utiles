@@ -1,4 +1,3 @@
-
 # Go cd
 
 > Imagen con Go cd, contiene el server y el agent para realizar las pruebas
