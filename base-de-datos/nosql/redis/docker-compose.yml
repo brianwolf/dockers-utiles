@@ -1,18 +1,25 @@
-version: "3.7"
+version: "3.8"
 
 services:
 
     redis:
         image: redis:5.0.7
         restart: always
-        
         env_file: 
             - ./docker-env/redis.env
-
         volumes:
-            - ~/volumes/redis/data:/data
-
+            - redis:/data
         ports:
-            - "6379:6379"
-
+            - 6379:6379
+        networks: 
+            - docker-net
         command: redis-server --appendonly yes
+
+networks:
+    docker-net:
+        name: docker-net
+        external: false
+
+volumes:
+    redis:
+        external: false
