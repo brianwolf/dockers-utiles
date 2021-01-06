@@ -1,17 +1,24 @@
-version: "3.7"
+version: "3.8"
 
 services:
+    db2:
+        image: ibmcom/db2:11.5.0.0
+        restart: on-failure:3
+        privileged: true
+        env_file:
+            - ./docker-env/db2.env
+        volumes:
+            - db2:/database:rw
+        networks:
+            - docker-net
+        ports:
+            - 50000:50000
 
-  db2:
-    image: ibmcom/db2:11.5.0.0
-    restart: always
-    privileged: true
-    
-    env_file: 
-      - ./docker-env/db2.env
-    
-    volumes:
-      - ~/volumes/db2:/database
-    
-    ports:
-      - "50000:50000"
+networks:
+    docker-net:
+        name: docker-net
+        external: false
+
+volumes:
+    db2:
+        external: false

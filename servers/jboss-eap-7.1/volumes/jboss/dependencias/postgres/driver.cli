@@ -1,6 +1,0 @@
-embed-server
-batch
-
-deploy --name=postgresql /home/jboss/jboss-eap-7.1/dependencias/postgres/postgresql.jar
-
-run-batch

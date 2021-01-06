@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 
 services:
 
@@ -23,7 +23,7 @@ services:
 
     mysql:
         image: mysql:8.0.19
-        restart: always
+        restart: on-failure:3
         
         env_file: 
             - ./docker-env/mysql.env
