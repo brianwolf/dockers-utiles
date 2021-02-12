@@ -1,8 +1,0 @@
----------------------------------------
-TOKENS
----------------------------------------
-
-> BRIAN
-gitlab: i8vPxavbxmr7mM4xw7mA
-dockerhub:hTtaoG7e_jnBsbGSHegQ
-gitAnses: skwJvhM81BAMEvUkqab6
