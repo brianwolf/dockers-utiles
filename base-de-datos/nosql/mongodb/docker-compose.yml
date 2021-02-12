@@ -1,16 +1,23 @@
-version: "3.7"
+version: "3.8"
 
 services:
-  
-  mongodb:
-    image: mongo:4.2.3
-    restart: always
-    
-    env_file: 
-      - ./docker-env/mongodb.env
+    mongodb:
+        image: mongo:4.2.3
+        restart: on-failure:3
+        env_file:
+            - ./docker-env/mongodb.env
+        volumes:
+            - mongodb:/data/db
+        networks:
+            - docker-net
+        ports:
+            - 27017:27017
 
-    volumes:
-      - ~/volumes/mongodb:/data/db
+networks:
+    docker-net:
+        name: docker-net
+        external: false
 
-    ports:
-      - 27017:27017
+volumes:
+    mongodb:
+        external: false

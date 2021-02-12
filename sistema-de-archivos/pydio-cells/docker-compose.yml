@@ -1,10 +1,10 @@
-version: "3.7"
+version: "3.8"
 
 services:
 
     cells:
         image: pydio/cells:latest
-        restart: always
+        restart: on-failure:3
         
         env_file: 
             - ./docker-env/cells.env
@@ -21,7 +21,7 @@ services:
 
     mysql:
         image: mysql:8.0.19
-        restart: always
+        restart: on-failure:3
         
         env_file: 
             - ./docker-env/mysql.env

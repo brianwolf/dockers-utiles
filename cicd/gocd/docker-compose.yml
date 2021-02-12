@@ -1,43 +1,43 @@
-version: "3.7"
+version: "3.8"
 
 services:
-
     gocd-server:
         image: gocd/gocd-server:v20.1.0
-        restart: always
+        restart: on-failure:3
         user: root
-
-        env_file: 
+        env_file:
             - ./docker-env/gocd-server.env
-
         volumes:
-            - ~/volumes/gocd-server/godata/addons:/godata/addons
-            - ~/volumes/gocd-server/godata/artifacts:/godata/artifacts
-            - ~/volumes/gocd-server/godata/config:/godata/config
-            - ~/volumes/gocd-server/godata/db:/godata/db
-            - ~/volumes/gocd-server/godata/logs:/godata/logs
-            - ~/volumes/gocd-server/godata/plugins:/godata/plugins
-            - ~/volumes/gocd-server/home/go:/home/go
-
+            - gocd-server:/godata:rw
+            - gocd-server:/home/go:rw
+        networks:
+            - docker-net
         ports:
             - 8153:8153
             - 8154:8154
 
-
     gocd-agent:
         # image: gocd/gocd-agent-ubuntu-18.04:v20.2.0
         image: gocd/gocd-agent-alpine-3.8:v20.2.0
-        restart: always
+        restart: on-failure:3
         user: root
-        
-        env_file: 
+        env_file:
             - ./docker-env/gocd-agent.env
-
         volumes:
-            - ~/volumes/gocd-agent/godata/config:/godata/config
-            - ~/volumes/gocd-agent/godata/pipelines:/godata/pipelines
-            - ~/volumes/gocd-agent/godata/logs:/godata/logs
-            - ~/volumes/gocd-agent/home/go:/home/go
-
+            - gocd-agent:/godata:rw
+            - gocd-agent:/home/go:rw
+        networks:
+            - docker-net
         depends_on:
             - gocd-server
+
+networks:
+    docker-net:
+        name: docker-net
+        external: false
+
+volumes:
+    gocd-server:
+        external: false
+    gocd-agent:
+        external: false

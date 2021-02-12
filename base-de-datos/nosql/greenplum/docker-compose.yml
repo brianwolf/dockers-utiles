@@ -1,23 +1,21 @@
-version: "3.7"
+version: "3.8"
 
 services:
-
     greenplum:
         image: datagrip/greenplum:latest
-        restart: always
-        env_file: 
+        restart: on-failure:3
+        env_file:
             - ./docker-env/greenplum.env
-        volumes: 
+        volumes:
             - greenplum:/gpdata:rw
         ports:
             - 5432:5432
 
 networks:
-    default:
-        external:
-            name: docker-net
-    
+    docker-net:
+        name: docker-net
+        external: false
+
 volumes:
     greenplum:
         external: false
-              

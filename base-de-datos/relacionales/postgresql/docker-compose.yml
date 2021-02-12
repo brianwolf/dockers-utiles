@@ -1,17 +1,23 @@
-version: "3.7"
+version: "3.8"
 
 services:
+    postgres:
+        image: postgres
+        restart: on-failure:3
+        env_file:
+            - ./docker-env/postgres.env
+        volumes:
+            - postgres:/var/lib/postgresql/data:rw
+        networks:
+            - docker-net
+        ports:
+            - 5432:5432
 
-  postgres:
-    image: postgres
-    restart: always
-    
-    env_file: 
-      - ./docker-env/postgres.env
-    
-    volumes:
-      - ~/volumes/postgres/postgres-data:/var/lib/postgresql/data
-      - ~/volumes/postgres/sql/:/volumes/sql/
-      
-    ports:
-      - "5432:5432"
+networks:
+    docker-net:
+        name: docker-net
+        external: false
+
+volumes:
+    postgres:
+        external: false

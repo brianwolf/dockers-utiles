@@ -1,9 +1,9 @@
-version: "3.7"
+version: "3.8"
 
 services:
   sonar-service:
     image: sonarqube
-    restart: always
+    restart: on-failure:3
 
     volumes:
       - ./volumes/sonarqube/conf:/opt/sonarqube/conf
