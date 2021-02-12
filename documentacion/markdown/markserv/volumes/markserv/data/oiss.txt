@@ -1,0 +1,34 @@
+=======================================================
+ANSES
+=======================================================
+
+DESA ACCESO 1
+Usuario: e716376
+IP PC: 10.86.31.177
+Server: 10.8.15.77
+Tipo de acceso: SSH ROOT
+Vigencia: 1 año (o el máximo permitido)
+
+DESA ACCESO 2
+Usuario: e827735
+IP PC: 10.86.31.97
+Server: 10.8.15.77
+Tipo de acceso: SSH ROOT
+Vigencia: 1 año (o el máximo permitido)
+
+HOMO ACCESO 1
+Usuario: e716376
+IP PC: 10.86.31.177
+Server: 10.7.2.23
+Tipo de acceso: SSH ROOT
+Vigencia: 1 año (o el máximo permitido)
+
+HOMO ACCESO 2
+Usuario: e827735
+IP PC: 10.86.31.97
+Server: 10.7.2.23
+Tipo de acceso: SSH ROOT
+Vigencia: 1 año (o el máximo permitido)
+
+
+
