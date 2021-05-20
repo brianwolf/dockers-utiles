@@ -1,5 +1,4 @@
-.gitignores
+.gitignore
 README.md
 
-docker-env/
 docs/

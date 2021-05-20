@@ -4,18 +4,9 @@ services:
 
     golang:
         image: golang:1.16.4
-        restart: "no"
-        env_file: 
-            - ./docker-env/golang.env
+        container_name: golang-1.16.4-dev
+        tty: true
         volumes:
-            - ./volumes/golang:/usr/src/
+            - ./:/usr/src/
         ports:
             - 8080:8080
-        networks: 
-            - docker-net
-        tty: true
-
-networks:
-    docker-net:
-        name: docker-net
-        external: false
