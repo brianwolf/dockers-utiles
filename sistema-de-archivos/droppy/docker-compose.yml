@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+
+    droppy:
+        image: silverwind/droppy
+        restart: on-failure:3
+        env_file: 
+            - ./docker-env/droppy.env
+        volumes:
+            - droppy:/config:rw
+            - droppy:/files:rw
+        ports:
+            - 8989:8989
+        networks: 
+            - docker-net
+
+networks:
+    docker-net:
+        name: docker-net
+        external: false
+    
+volumes:
+    droppy:
+        name: droppy
+        external: false
+                

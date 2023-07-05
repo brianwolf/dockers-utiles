@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+
+    nexus3:
+        image: sonatype/nexus3
+        restart: on-failure:3
+        env_file: 
+            - ./docker-env/nexus3.env
+        volumes: 
+            - nexus3:/nexus-data:rw
+        ports: 
+            - 8081:8081
+        networks: 
+            - docker-net
+
+networks:
+    docker-net:
+        name: docker-net
+        external: false
+    
+volumes:
+    nexus3:
+        name: nexus3
+        external: false
+                

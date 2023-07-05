@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+
+    java:
+        image: maven:3.8.3-openjdk-17
+        container_name: maven-openjdk17-dev
+        tty: true
+        volumes:
+            - ./:/home/src
+            - m2:/root/.m2
+        ports:
+            - 8080:8080
+
+volumes:
+    m2:

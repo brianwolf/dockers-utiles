@@ -1,0 +1,6 @@
+SADD my_key "my_value1"
+SADD my_key "my_value2"
+SADD my_key "my_value3"
+SADD my_key "my_value4"
+SADD my_key "my_value5"
+SADD my_key "my_value6"

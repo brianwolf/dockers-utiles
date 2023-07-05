@@ -1,0 +1,25 @@
+version: "3.8"
+
+
+services:
+  filebrowser:
+    image: hurlenko/filebrowser
+    ports:
+        - 8080:8080
+    env_file: 
+        - ./docker-env/filebrowser.env
+    volumes:
+        - filebrowser:/data:rw
+    networks: 
+        - docker-net
+
+networks:
+    docker-net:
+        name: docker-net
+        external: false
+    
+volumes:
+    filebrowser:
+        name: filebrowser
+        external: false
+                

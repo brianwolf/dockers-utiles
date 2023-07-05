@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+    oracle:
+        image: gvenzl/oracle-xe
+        restart: on-failure:3
+        environment:
+            ORACLE_PASSWORD: oracle
+            ORACLE_DATABASE: oracle
+        volumes:
+            - oracle:/opt/oracle/oradata
+        networks:
+            - docker-net
+        ports:
+            - 1521:1521
+
+networks:
+    docker-net:
+
+volumes:
+    oracle:
+        external: false

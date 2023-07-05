@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+
+    nfs:
+        image: itsthenetwork/nfs-server-alpine:latest
+        restart: on-failure:3
+        environment:
+            - SHARED_DIRECTORY=/nfs
+        volumes:
+            - ./nfs:/nfs:rw
+        networks:
+            - docker-net
+        ports:
+            - 2049:2049
+        privileged: true
+
+
+networks:
+    docker-net:
+        name: docker-net
+        external: false

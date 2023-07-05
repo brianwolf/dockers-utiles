@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+
+    golang:
+        image: golang:1.16.4
+        container_name: golang-1.16.4-dev
+        tty: true
+        volumes:
+            - ./:/usr/src/
+        ports:
+            - 8080:8080

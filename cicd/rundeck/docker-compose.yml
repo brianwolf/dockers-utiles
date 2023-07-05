@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+    rundeck:
+        image: rundeck/rundeck:3.4.3
+        restart: on-failure:3
+        env_file:
+            - ./docker-env/rundeck.env
+        volumes:
+            - rundeck:/home/rundeck/server/data:rw
+        networks:
+            - docker-net
+        ports:
+            - 4440:4440
+
+networks:
+    docker-net:
+        name: docker-net
+        external: false
+
+volumes:
+    rundeck:
+        external: false

@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+    hoppscotch:
+        image: hoppscotch/hoppscotch:latest
+        env_file:
+            - ./docker-env/hoppscotch.env
+        volumes:
+            - hoppscotch:/app:rw
+        networks:
+            - docker-net
+        ports:
+            - 3000:3000
+
+networks:
+    docker-net:
+        name: docker-net
+        external: false
+
+volumes:
+    hoppscotch:
+        external: false

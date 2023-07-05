@@ -1,0 +1,13 @@
+{
+    "dockerComposeFile": "../compose.yaml",
+    "workspaceFolder": "/home/src/",
+    "service": "node",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "xabikos.javascriptsnippets",
+                "dbaeumer.vscode-eslint"
+            ]
+        }
+    }
+}

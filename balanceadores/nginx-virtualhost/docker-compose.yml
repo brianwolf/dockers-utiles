@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+
+    nginx-proxy:
+        image: jwilder/nginx-proxy
+        ports:
+            - 80:80
+            - 443:443
+        volumes:
+            - /var/run/docker.sock:/tmp/docker.sock:ro
+        networks: 
+            - docker-net
+
+    nodo1:
+        image: httpd:2.4
+        environment:
+            - VIRTUAL_HOST=nodo1.localhost
+            - VIRTUAL_PORT=80
+        expose:
+            - 80
+        volumes: 
+            - ./volumes/nodo1/:/usr/local/apache2/htdocs/
+        networks: 
+            - docker-net
+
+networks:
+    docker-net:
+        name: docker-net
+        external: false
+    

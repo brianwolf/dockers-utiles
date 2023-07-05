@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+    druid:
+        image: fokkodriesprong/docker-druid:latest
+        restart: on-failure:3
+        env_file:
+            - ./docker-env/druid.env
+        volumes:
+            - druid:/tmp
+            - druid:/opt/druid/conf
+            - ~/volumes/logs:/opt/druid/var/sv
+        networks:
+            - docker-net
+        ports:
+            - 8888:8888
+            - 8090:8888
+            - 8082:8888
+
+networks:
+    docker-net:
+        name: docker-net
+        external: false
+
+volumes:
+    druid:
+        external: false

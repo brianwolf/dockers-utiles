@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+    mysql:
+        image: mysql:8.0.19
+        restart: on-failure:3
+        env_file:
+            - ./docker-env/mysql.env
+        volumes:
+            - mysql:/var/lib/mysql
+        networks:
+            - docker-net
+        ports:
+            - 3306:3306
+        command: --default-authentication-plugin=mysql_native_password
+
+networks:
+    docker-net:
+        name: docker-net
+        external: false
+
+volumes:
+    mysql:
+        external: false

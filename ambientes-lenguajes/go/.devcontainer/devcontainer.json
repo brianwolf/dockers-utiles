@@ -1,0 +1,13 @@
+{
+    "dockerComposeFile": "../compose.yaml",
+    "workspaceFolder": "/usr/src/",
+    "service": "golang",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "golang.go",
+                "dannymcgee.vscode-go-grammar"
+            ]
+        }
+    }
+}

@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+
+    nexus:
+        image: sonatype/nexus:oss
+        restart: on-failure:3
+        user: root
+        
+        env_file: 
+            - ./docker-env/nexus.env
+            
+        volumes: 
+            - ~/volumes/nexus/data:/sonatype-work
+
+        ports: 
+            - 8081:8081

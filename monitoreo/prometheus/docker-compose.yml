@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+
+  prometheus:
+    image: prom/prometheus
+    restart: on-failure:3
+    volumes:
+      - ./volume/:/etc/prometheus/:rw
+    ports:
+      - 9090:9090
+
+  grafana:
+    image: grafana/grafana-oss:8.2.0
+    restart: on-failure:3
+    ports:
+      - 3000:3000
+
+  pushgateway:
+    image: prom/pushgateway
+    container_name: pushgateway
+    restart: on-failure:3
+    ports:
+      - 9091:9091
+
+networks:
+  default:
+    external:
+      name: docker-net

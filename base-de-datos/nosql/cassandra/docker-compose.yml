@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+    cassandra:
+        image: cassandra:3.11.6
+        restart: on-failure:3
+        env_file:
+            - ./docker-env/cassandra.env
+        volumes:
+            - cassandra:/var/lib/cassandra:rw
+        networks:
+            - docker-net
+        ports:
+            - 7000:7000
+            - 9042:9042
+
+networks:
+    docker-net:
+        name: docker-net
+        external: false
+
+volumes:
+    cassandra:
+        external: false
