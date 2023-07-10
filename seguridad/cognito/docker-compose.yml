@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  cognito:
+    image: jagregory/cognito-local:latest
+    container_name: cognito
+    hostname: cognito
+    restart: always
+    ports:
+      - 9229:9229
+    volumes:
+      - cognito:/app/.cognito
+
+networks:
+  docker-net:
+    name: docker-net
+    external: true
+
+volumes:
+  cognito:
+    name: cognito
+    external: false
