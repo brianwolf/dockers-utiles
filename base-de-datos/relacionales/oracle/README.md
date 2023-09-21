@@ -7,6 +7,7 @@
 
 ## ACCESOS
 
+* **db**: oracle
 * **user**: system
 * **pass**: oracle
 * **puerto**: 1521
