@@ -3,7 +3,8 @@ version: "3.8"
 services:
     ssh-server:
         image: lscr.io/linuxserver/openssh-server:latest
-        restart: on-failure:3
+        container_name: ssh-server
+        hostname: ssh-server
         environment:
             - USER_NAME=admin
             - USER_PASSWORD=admin

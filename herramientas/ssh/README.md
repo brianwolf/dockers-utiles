@@ -5,7 +5,7 @@
 
 ## Puertos
 
-* **server**: 8080
+* **server**: 2222
 
 ## ACCESOS
 
