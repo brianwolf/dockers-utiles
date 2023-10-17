@@ -3,7 +3,6 @@ version: "3.8"
 services:
   dynamodb:
     image: amazon/dynamodb-local
-    restart: on-failure:3
     volumes:
       - dynamodb:/home/dynamodblocal/data
     ports:

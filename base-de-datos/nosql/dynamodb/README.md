@@ -1,15 +1,8 @@
-# Mongo DB
-> imagen de mongoDB
+# DynamoDB
+> imagen de DynamoDB
 
-![alt text](img/MongoDB.png)
-
-## ACCESOS
-
-* **user**: mongo
-* **pass**: mongo
-* **puerto**: 27017
-* **DB**: admin
+![alt text](img/dynamodb.png)
 
 ## Volumes
 
-* **mongodb**: con los datos guardados de la base de datos
+* **dynamodb**: con los datos guardados de la base de datos
