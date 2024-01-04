@@ -2,10 +2,9 @@ version: "3.8"
 
 services:
     rundeck:
-        image: rundeck/rundeck:3.4.3
-        restart: on-failure:3
-        env_file:
-            - ./docker-env/rundeck.env
+        image: rundeck/rundeck:5.0.1-rc1-20240103
+        environment:
+            RUNDECK_GRAILS_URL: https://0.0.0.0:4440/
         volumes:
             - rundeck:/home/rundeck/server/data:rw
         networks:
