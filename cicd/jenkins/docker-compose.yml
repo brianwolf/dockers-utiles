@@ -2,11 +2,7 @@ version: "3.8"
 
 services:
     jenkins:
-        image: jenkins/jenkins:lts
-        restart: on-failure:3
-        user: root
-        env_file:
-            - ./docker-env/jenkins.env
+        image: jenkins/jenkins:latest
         volumes:
             - jenkins:/var/jenkins_home:rw
         networks:
