@@ -1,4 +1,4 @@
-#  :file_folder: Dockers-Utiles
+# :file_folder: Dockers-Utiles
 
 > Proyecto con dockers de todo tipo
 
@@ -8,11 +8,11 @@ La idea es ejecutarlos de forma simple con **docker-compose**, para cuando neces
 
 ---
 
-##  :clipboard: Requisitos
+## :clipboard: Requisitos
 
 * Tener instalado **docker** y **docker-compose**
 
-##  :tada: Uso
+## :tada: Uso
 
 * Pararse en la carpeta raíz **del docker que se quiera correr** *(donde esta su readme.md)*
 * Ejecutar `docker-compose up`
