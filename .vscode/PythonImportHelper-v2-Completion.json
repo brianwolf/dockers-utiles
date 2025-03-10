@@ -1,0 +1,254 @@
+[
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "consul",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "consul",
+        "description": "consul",
+        "detail": "consul",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "KafkaConsumer",
+        "importPath": "kafka",
+        "description": "kafka",
+        "isExtraImport": true,
+        "detail": "kafka",
+        "documentation": {}
+    },
+    {
+        "label": "KafkaProducer",
+        "importPath": "kafka",
+        "description": "kafka",
+        "isExtraImport": true,
+        "detail": "kafka",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "sleep",
+        "importPath": "time",
+        "description": "time",
+        "isExtraImport": true,
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "CollectorRegistry",
+        "importPath": "prometheus_client",
+        "description": "prometheus_client",
+        "isExtraImport": true,
+        "detail": "prometheus_client",
+        "documentation": {}
+    },
+    {
+        "label": "Gauge",
+        "importPath": "prometheus_client",
+        "description": "prometheus_client",
+        "isExtraImport": true,
+        "detail": "prometheus_client",
+        "documentation": {}
+    },
+    {
+        "label": "push_to_gateway",
+        "importPath": "prometheus_client",
+        "description": "prometheus_client",
+        "isExtraImport": true,
+        "detail": "prometheus_client",
+        "documentation": {}
+    },
+    {
+        "label": "entry_point",
+        "kind": 2,
+        "importPath": "api-gateway.consul.python.app",
+        "description": "api-gateway.consul.python.app",
+        "peekOfCode": "def entry_point():\n    return 'Hello World!', 200\nservice = consul.Consul(host='consul', port=8500)\nservice.agent.service.register(service_id=f'{HOST}', name='ser', address=HOST, port=PORT,\n            tags=[f\"{HOST}\", \"v1\"],\n            check= {\n                'service_id': f'{HOST}',\n                'name': 'ser',\n                'tcp': f'{HOST}:{PORT}',\n                'Interval': '30s', ",
+        "detail": "api-gateway.consul.python.app",
+        "documentation": {}
+    },
+    {
+        "label": "HOST",
+        "kind": 5,
+        "importPath": "api-gateway.consul.python.app",
+        "description": "api-gateway.consul.python.app",
+        "peekOfCode": "HOST = sys.argv[1]\nPORT = int(sys.argv[2])\napp = Flask(__name__)\n@app.route('/')\ndef entry_point():\n    return 'Hello World!', 200\nservice = consul.Consul(host='consul', port=8500)\nservice.agent.service.register(service_id=f'{HOST}', name='ser', address=HOST, port=PORT,\n            tags=[f\"{HOST}\", \"v1\"],\n            check= {",
+        "detail": "api-gateway.consul.python.app",
+        "documentation": {}
+    },
+    {
+        "label": "PORT",
+        "kind": 5,
+        "importPath": "api-gateway.consul.python.app",
+        "description": "api-gateway.consul.python.app",
+        "peekOfCode": "PORT = int(sys.argv[2])\napp = Flask(__name__)\n@app.route('/')\ndef entry_point():\n    return 'Hello World!', 200\nservice = consul.Consul(host='consul', port=8500)\nservice.agent.service.register(service_id=f'{HOST}', name='ser', address=HOST, port=PORT,\n            tags=[f\"{HOST}\", \"v1\"],\n            check= {\n                'service_id': f'{HOST}',",
+        "detail": "api-gateway.consul.python.app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "api-gateway.consul.python.app",
+        "description": "api-gateway.consul.python.app",
+        "peekOfCode": "app = Flask(__name__)\n@app.route('/')\ndef entry_point():\n    return 'Hello World!', 200\nservice = consul.Consul(host='consul', port=8500)\nservice.agent.service.register(service_id=f'{HOST}', name='ser', address=HOST, port=PORT,\n            tags=[f\"{HOST}\", \"v1\"],\n            check= {\n                'service_id': f'{HOST}',\n                'name': 'ser',",
+        "detail": "api-gateway.consul.python.app",
+        "documentation": {}
+    },
+    {
+        "label": "service",
+        "kind": 5,
+        "importPath": "api-gateway.consul.python.app",
+        "description": "api-gateway.consul.python.app",
+        "peekOfCode": "service = consul.Consul(host='consul', port=8500)\nservice.agent.service.register(service_id=f'{HOST}', name='ser', address=HOST, port=PORT,\n            tags=[f\"{HOST}\", \"v1\"],\n            check= {\n                'service_id': f'{HOST}',\n                'name': 'ser',\n                'tcp': f'{HOST}:{PORT}',\n                'Interval': '30s', \n                'timeout': '60s'\n            })",
+        "detail": "api-gateway.consul.python.app",
+        "documentation": {}
+    },
+    {
+        "label": "KAFKA_URL",
+        "kind": 5,
+        "importPath": "colas.kafka.python.consumer",
+        "description": "colas.kafka.python.consumer",
+        "peekOfCode": "KAFKA_URL = 'localhost:9092'\nKAFKA_TOPIC = 'topico'\nconsumer = KafkaConsumer(\n    'topico',\n    bootstrap_servers=[KAFKA_URL],\n    auto_offset_reset='earliest'\n)\nfor message in consumer:\n    print(\n        f\"recibido => topico: {message.topic} | key: {message.key} | value: {message.value}\")",
+        "detail": "colas.kafka.python.consumer",
+        "documentation": {}
+    },
+    {
+        "label": "KAFKA_TOPIC",
+        "kind": 5,
+        "importPath": "colas.kafka.python.consumer",
+        "description": "colas.kafka.python.consumer",
+        "peekOfCode": "KAFKA_TOPIC = 'topico'\nconsumer = KafkaConsumer(\n    'topico',\n    bootstrap_servers=[KAFKA_URL],\n    auto_offset_reset='earliest'\n)\nfor message in consumer:\n    print(\n        f\"recibido => topico: {message.topic} | key: {message.key} | value: {message.value}\")",
+        "detail": "colas.kafka.python.consumer",
+        "documentation": {}
+    },
+    {
+        "label": "consumer",
+        "kind": 5,
+        "importPath": "colas.kafka.python.consumer",
+        "description": "colas.kafka.python.consumer",
+        "peekOfCode": "consumer = KafkaConsumer(\n    'topico',\n    bootstrap_servers=[KAFKA_URL],\n    auto_offset_reset='earliest'\n)\nfor message in consumer:\n    print(\n        f\"recibido => topico: {message.topic} | key: {message.key} | value: {message.value}\")",
+        "detail": "colas.kafka.python.consumer",
+        "documentation": {}
+    },
+    {
+        "label": "KAFKA_URL",
+        "kind": 5,
+        "importPath": "colas.kafka.python.producer",
+        "description": "colas.kafka.python.producer",
+        "peekOfCode": "KAFKA_URL = 'localhost:9092'\nKAFKA_TOPIC = 'topico'\nproducer = KafkaProducer(\n    bootstrap_servers=[KAFKA_URL]\n)\nwhile True:\n    key = f\"{random.randrange(999)}\".encode()\n    value = f\"{random.randrange(999)}\".encode()\n    producer.send(topic=KAFKA_TOPIC, key=key, value=value)\n    producer.flush()",
+        "detail": "colas.kafka.python.producer",
+        "documentation": {}
+    },
+    {
+        "label": "KAFKA_TOPIC",
+        "kind": 5,
+        "importPath": "colas.kafka.python.producer",
+        "description": "colas.kafka.python.producer",
+        "peekOfCode": "KAFKA_TOPIC = 'topico'\nproducer = KafkaProducer(\n    bootstrap_servers=[KAFKA_URL]\n)\nwhile True:\n    key = f\"{random.randrange(999)}\".encode()\n    value = f\"{random.randrange(999)}\".encode()\n    producer.send(topic=KAFKA_TOPIC, key=key, value=value)\n    producer.flush()\n    print(f\"enviado -> key: {key} | value: {value}\")",
+        "detail": "colas.kafka.python.producer",
+        "documentation": {}
+    },
+    {
+        "label": "producer",
+        "kind": 5,
+        "importPath": "colas.kafka.python.producer",
+        "description": "colas.kafka.python.producer",
+        "peekOfCode": "producer = KafkaProducer(\n    bootstrap_servers=[KAFKA_URL]\n)\nwhile True:\n    key = f\"{random.randrange(999)}\".encode()\n    value = f\"{random.randrange(999)}\".encode()\n    producer.send(topic=KAFKA_TOPIC, key=key, value=value)\n    producer.flush()\n    print(f\"enviado -> key: {key} | value: {value}\")\n    time.sleep(4)",
+        "detail": "colas.kafka.python.producer",
+        "documentation": {}
+    },
+    {
+        "label": "registry",
+        "kind": 5,
+        "importPath": "monitoreo.prometheus.scripts.cargar_datos",
+        "description": "monitoreo.prometheus.scripts.cargar_datos",
+        "peekOfCode": "registry = CollectorRegistry()\ng = Gauge('job_last_success_unixtime', 'Last time a batch job successfully finished', registry=registry)\ng.set(7)\npush_to_gateway('localhost:9091', job='scale_data', registry=registry)",
+        "detail": "monitoreo.prometheus.scripts.cargar_datos",
+        "documentation": {}
+    },
+    {
+        "label": "g",
+        "kind": 5,
+        "importPath": "monitoreo.prometheus.scripts.cargar_datos",
+        "description": "monitoreo.prometheus.scripts.cargar_datos",
+        "peekOfCode": "g = Gauge('job_last_success_unixtime', 'Last time a batch job successfully finished', registry=registry)\ng.set(7)\npush_to_gateway('localhost:9091', job='scale_data', registry=registry)",
+        "detail": "monitoreo.prometheus.scripts.cargar_datos",
+        "documentation": {}
+    },
+    {
+        "label": "alive",
+        "kind": 2,
+        "importPath": "proxys.ha_proxy.python.src.app",
+        "description": "proxys.ha_proxy.python.src.app",
+        "peekOfCode": "def alive():\n    return jsonify(saludo=\"hola mundo redondo\"), 200\n@app.route(\"/prueba\")\ndef prueba():\n    sleep(2)\n    respuesta = {\n        \"asd\":\"asdasd\"\n    }\n    return jsonify(respuesta), 200\nif __name__ == \"__main__\":",
+        "detail": "proxys.ha_proxy.python.src.app",
+        "documentation": {}
+    },
+    {
+        "label": "prueba",
+        "kind": 2,
+        "importPath": "proxys.ha_proxy.python.src.app",
+        "description": "proxys.ha_proxy.python.src.app",
+        "peekOfCode": "def prueba():\n    sleep(2)\n    respuesta = {\n        \"asd\":\"asdasd\"\n    }\n    return jsonify(respuesta), 200\nif __name__ == \"__main__\":\n    app.run(host='localhost', port=5000, debug=True)",
+        "detail": "proxys.ha_proxy.python.src.app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "proxys.ha_proxy.python.src.app",
+        "description": "proxys.ha_proxy.python.src.app",
+        "peekOfCode": "app = Flask(__name__)\n@app.route(\"/vivo\")\ndef alive():\n    return jsonify(saludo=\"hola mundo redondo\"), 200\n@app.route(\"/prueba\")\ndef prueba():\n    sleep(2)\n    respuesta = {\n        \"asd\":\"asdasd\"\n    }",
+        "detail": "proxys.ha_proxy.python.src.app",
+        "documentation": {}
+    }
+]
