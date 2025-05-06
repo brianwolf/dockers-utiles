@@ -1,26 +1,48 @@
-version: "3.8"
+name: nexus3
 
 services:
 
-    nexus3:
-        image: sonatype/nexus3
-        restart: on-failure:3
-        env_file: 
-            - ./docker-env/nexus3.env
-        volumes: 
-            - nexus3:/nexus-data:rw
-        ports: 
-            - 8081:8081
-        networks: 
-            - docker-net
+  nexus3:
+    image: sonatype/nexus3
+    container_name: nexus3
+    hostname: nexus3
+    environment:
+      NEXUS_DATASTORE_NEXUS_JDBCURL: jdbc:postgresql://postgres:5432/postgres
+      NEXUS_DATASTORE_NEXUS_USERNAME: postgres
+      NEXUS_DATASTORE_NEXUS_PASSWORD: postgres
+    volumes:
+      - nexus3:/nexus-data:rw
+    ports:
+      - 8081:8081
+    networks:
+      - docker-net
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres
+    container_name: postgres
+    hostname: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - postgres:/var/lib/postgresql/data:rw
+    networks:
+      - docker-net
+    ports:
+      - 5432:5432
 
 networks:
-    docker-net:
-        name: docker-net
-        external: false
-    
+  docker-net:
+    name: docker-net
+    external: true
+
 volumes:
-    nexus3:
-        name: nexus3
-        external: false
-                
+  nexus3:
+    name: nexus3
+    external: false
+  postgres:
+    name: postgres
+    external: false
