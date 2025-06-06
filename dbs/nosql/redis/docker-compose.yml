@@ -1,0 +1,33 @@
+name: redis
+
+networks:
+  docker-net:
+    external: true
+
+volumes:
+  redis:
+    external: false
+
+services:
+  redis:
+    image: redis:8.0.2
+    container_name: redis
+    hostname: redis
+    restart: on-failure:3
+    volumes:
+      - redis:/data:rw
+    networks:
+      - docker-net
+    ports:
+      - 6379:6379
+    command: redis-server --appendonly yes
+
+  gui:
+    image: redis/redisinsight:2.70.0
+    container_name: redisinsight
+    hostname: redisinsight
+    restart: on-failure:3
+    networks:
+      - docker-net
+    ports:
+      - 5540:5540
