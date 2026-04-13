@@ -1,0 +1,7 @@
+GET https://lasegunda-nodejs-example-msdesa.apps.ocp01-noprod.ocplasegunda.com.ar/api/empresas
+Accept: application/json
+Content-Type: application/json
+
+GET https://lasegunda-nodejs-example-msdesa.apps.ocp01-noprod.ocplasegunda.com.ar/api/paos
+Accept: application/json
+Content-Type: application/json

@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+
+    nginx:
+        image: nginx
+        container_name: nginx
+        restart: on-failure:3
+        env_file:
+            - ./docker-env/nginx.env
+        volumes: 
+            - ./volumes/nginx/:/etc/nginx/nginx/:rw
+        ports:
+            - 80:80
+        networks: 
+            - docker-net
+        working_dir: /etc/nginx/
+        command: ./nginx/scripts/iniciar.sh
+
+    nodo-1:
+        image: httpd:2.4
+        container_name: nodo-1
+        restart: on-failure:3
+        volumes: 
+            - ./volumes/nodo-1/:/usr/local/apache2/htdocs/
+        ports:
+            - 81:80
+        networks: 
+            - docker-net
+
+    nodo-2:
+        image: httpd:2.4
+        container_name: nodo-2
+        restart: on-failure:3
+        volumes: 
+            - ./volumes/nodo-2/:/usr/local/apache2/htdocs/
+        ports:
+            - 82:80
+        networks: 
+            - docker-net
+
+networks:
+    docker-net:
+        name: docker-net
+        external: false
+    

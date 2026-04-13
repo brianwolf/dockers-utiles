@@ -1,0 +1,24 @@
+name: oracle
+
+networks:
+  docker-net:
+    external: true
+
+volumes:
+  oracle:
+    external: false
+
+services:
+  oracle:
+    image: oraclelinux:9-slim
+    restart: on-failure:3
+    environment:
+      ORACLE_PASSWORD: oracle
+      ORACLE_DATABASE: oracle
+    volumes:
+        - oracle:/opt/oracle/oradata
+    networks:
+        - docker-net
+    ports:
+        - 1521:1521
+

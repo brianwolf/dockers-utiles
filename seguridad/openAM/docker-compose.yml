@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+
+    openam:
+        image: openidentityplatform/openam
+        restart: on-failure:3
+        volumes:
+            - openam:/home/openam/config:rw
+            - openam:/root/.openamcfg:rw
+        ports:
+            - 8080:8080
+        networks: 
+            - docker-net
+
+networks:
+    docker-net:
+        name: docker-net
+        external: false
+    
+volumes:
+    openam:
+        name: openam
+        external: false
+                

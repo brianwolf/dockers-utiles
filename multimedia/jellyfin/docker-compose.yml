@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  jellyfin:
+    container_name: jellyfin
+    hostname: jellyfin
+    image: jellyfin/jellyfin
+    restart: always
+    volumes:
+      - jellyfin:/config
+      - jellyfin:/cache
+      - ./volumes:/media:Z
+    ports:
+      - 8096:8096
+    environment:
+      - JELLYFIN_PublishedServerUrl=media.lobo.theworkpc.com
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+networks:
+  docker-net:
+    name: docker-net
+    external: true
+
+volumes:
+  jellyfin:
+    name: jellyfin
+    external: false

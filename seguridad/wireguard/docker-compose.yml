@@ -1,0 +1,58 @@
+version: "3.8"
+
+services:
+
+    wireguard:
+        container_name: wireguard
+        image: linuxserver/wireguard
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=America/Argentina/Buenos_Aires
+            - SERVERURL=152.171.157.88
+            - PEERS=1
+            # optionales
+            - SERVERPORT=51820
+            - PEERDNS=auto
+            - INTERNAL_SUBNET=10.13.13.0
+            - ALLOWEDIPS=0.0.0.0/0
+            - PERSISTENTKEEPALIVE_PEERS=10
+            - LOG_CONFS=true
+        volumes:
+            - config:/config
+            - modules:/lib/modules/
+        ports:
+            - 51820:51820/udp
+        networks:
+            - docker-net
+        sysctls:
+            - net.ipv4.conf.all.src_valid_mark=1
+        cap_add:
+            - NET_ADMIN
+            - SYS_MODULE
+
+    # el front es bonito pero no sirve
+    wireguard-ui:
+        container_name: wireguard-ui
+        image: ngoduykhanh/wireguard-ui:latest
+        cap_add:
+            - NET_ADMIN
+        environment:
+            - LOGIN_PAGE=1
+            - BIND_ADDRESS=0.0.0.0:5000
+        volumes:
+            - config:/config
+        ports:
+            - 5000:5000
+        networks:
+            - docker-net
+        depends_on:
+            - wireguard
+
+networks:
+    docker-net:
+
+
+volumes:
+    config:
+    modules:

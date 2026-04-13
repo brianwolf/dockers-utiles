@@ -1,0 +1,12 @@
+{
+    "dockerComposeFile": "../compose.yaml",
+    "workspaceFolder": "/usr/src/app/",
+    "service": "java",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "vscjava.vscode-java-pack"
+            ]
+        }
+    }
+}

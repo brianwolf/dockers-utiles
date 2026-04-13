@@ -1,0 +1,23 @@
+version: "3.3"
+
+services:
+    mssql:
+        image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+        restart: on-failure:3
+        env_file:
+            - ./docker-env/mssql.env
+        volumes:
+            - mssql:/var/opt/mssql:rw
+        networks:
+            - docker-net
+        ports:
+            - 1433:1433
+
+networks:
+    docker-net:
+        name: docker-net
+        external: false
+
+volumes:
+    mssql:
+        external: false

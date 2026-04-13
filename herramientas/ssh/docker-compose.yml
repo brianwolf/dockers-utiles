@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+    ssh-server:
+        image: lscr.io/linuxserver/openssh-server:latest
+        container_name: ssh-server
+        hostname: ssh-server
+        environment:
+            - USER_NAME=admin
+            - USER_PASSWORD=admin
+            - PASSWORD_ACCESS=true
+        networks:
+            - docker-net
+        ports:
+            - 2222:2222
+
+networks:
+    docker-net:
+        name: docker-net
+        external: false
+

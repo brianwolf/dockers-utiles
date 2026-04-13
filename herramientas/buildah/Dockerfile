@@ -1,0 +1,3 @@
+FROM alpine
+
+ENV ASD 1234

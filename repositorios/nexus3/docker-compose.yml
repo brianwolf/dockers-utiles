@@ -1,0 +1,24 @@
+name: nexus3
+
+services:
+
+  nexus3:
+    image: sonatype/nexus3:3.90.3
+    container_name: nexus3
+    hostname: nexus3
+    volumes:
+      - nexus3:/nexus-data:rw
+    ports:
+      - 8081:8081
+    networks:
+      - docker-net
+
+networks:
+  docker-net:
+    name: docker-net
+    external: true
+
+volumes:
+  nexus3:
+    name: nexus3
+    external: false

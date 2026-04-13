@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+
+  sonar-service:
+    image: justb4/jmeter
+    restart: on-failure:3
+    volumes:
+      - ./volume/:/tmp/volume/
+    environment:
+      - JVM_ARGS=-Xmn1024m -Xms1024m -Xmx2048m
+    entrypoint: ./bin/jmeter.sh -n -t /tmp/volume/plan.jmx -l /tmp/volume/jmeter.jtl
+
+
+networks:
+  default:
+    external:
+      name: docker-net

@@ -1,0 +1,24 @@
+name: jaeger
+
+networks:
+  docker-net:
+    name: docker-net
+    external: false
+
+services:
+
+  jaeger:
+    container_name: jaeger
+    hostname: jaeger
+    image: jaegertracing/jaeger:2.3.0
+    environment:
+      COLLECTOR_ZIPKIN_HOST_PORT: 9411
+      COLLECTOR_OTLP_ENABLED: true
+    ports:
+      - 16686:16686
+      - 4317:4317
+      - 4318:4318
+      - 9411:9411
+      - 14268:14268
+    networks:
+      - docker-net

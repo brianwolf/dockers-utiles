@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+    elasticsearch:
+        image: elasticsearch:8.8.0
+        container_name: elasticsearch
+        environment:
+            - ELASTIC_USERNAME=kibana_system
+            - ELASTIC_PASSWORD=kibana_system
+        volumes:
+            - elasticsearch:/usr/share/elasticsearch/data
+        networks:
+            - docker-net
+        command: bin/elasticsearch-reset-password --batch --user kibana
+
+networks:
+    docker-net:
+        name: docker-net
+        external: false
+
+volumes:
+    elasticsearch:

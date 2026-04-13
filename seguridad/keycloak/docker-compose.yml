@@ -1,0 +1,20 @@
+name: keycloak
+
+networks:
+    docker-net:
+        name: docker-net
+        external: false
+
+services:
+
+    keycloak:
+        image: quay.io/keycloak/keycloak:26.1.2
+        restart: on-failure:3
+        environment:
+            - KC_BOOTSTRAP_ADMIN_USERNAME=admin
+            - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
+        ports:
+            - 8080:8080
+        networks:
+            - docker-net
+        command: start-dev

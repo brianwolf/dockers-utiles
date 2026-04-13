@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+
+    vault:
+        container_name: vault
+        image: vault:1.13.3
+        environment:
+            - VAULT_API_ADDR=http://0.0.0.0:8201
+            - VAULT_ADDR=http://0.0.0.0:8200
+            - VAULT_DEV_ROOT_TOKEN_ID=admin
+        ports:
+            - 8200:8200
+        networks:
+            - docker-net
+        
+
+networks:
+    docker-net:
+        name: docker-net
+        external: false

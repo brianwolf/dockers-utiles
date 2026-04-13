@@ -1,0 +1,37 @@
+services:
+  mongo:
+    image: mongo:7
+    container_name: dartvader-mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: dart_pub
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+
+  unpub:
+    build:
+      context: ./unpub
+      dockerfile: Dockerfile
+    container_name: dartvader-unpub
+    restart: unless-stopped
+    depends_on:
+      - mongo
+    environment:
+      UNPUB_MONGO_URI: mongodb://mongo:27017/dart_pub
+    command:
+      - --host
+      - 0.0.0.0
+      - --port
+      - "4000"
+      - --database
+      - mongodb://mongo:27017/dart_pub
+    ports:
+      - "4000:4000"
+    volumes:
+      - unpub_packages:/app/unpub-packages
+
+volumes:
+  mongo_data:
+  unpub_packages:
