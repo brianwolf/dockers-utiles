@@ -7,7 +7,6 @@ import 'package:oauth2/oauth2.dart' as oauth2;
 import 'package:http/http.dart' as http;
 
 import 'utils.dart';
-import 'credentials_ext.dart';
 
 const _tokenEndpoint = 'https://oauth2.googleapis.com/token';
 const _authEndpoint = 'https://accounts.google.com/o/oauth2/auth';
@@ -24,8 +23,8 @@ String _readRequiredEnv(String key) {
   return value;
 }
 
-String get _identifier => _readRequiredEnv('UNPUB_AUTH_GOOGLE_CLIENT_ID');
-String get _secret => _readRequiredEnv('UNPUB_AUTH_GOOGLE_CLIENT_SECRET');
+String get _identifier => _readRequiredEnv('GOOGLE_CLIENT_ID');
+String get _secret => _readRequiredEnv('GOOGLE_CLIENT_SECRET');
 
 enum Flow {
   login,
@@ -62,7 +61,7 @@ Future<void> migrate(Object? args) async {
   }
 
   final isValid =
-      oauth2.Credentials.fromJson(await File(args).readAsString()).isValid();
+      oauth2.Credentials.fromJson(await File(args).readAsString()).refreshToken != null && oauth2.Credentials.fromJson(await File(args).readAsString( )).refreshToken!.isNotEmpty;
   if (isValid) {
     await File(args).copy(Utils.credentialsFilePath);
     Utils.stdoutPrint(
@@ -74,7 +73,7 @@ Future<void> migrate(Object? args) async {
 Future<void> getToken() async {
   final credentials = await readCredentialsFromLocal();
 
-  if (credentials?.isValid() ?? false) {
+  if (credentials?.refreshToken != null && credentials!.refreshToken!.isNotEmpty) {
     /// unpub-credentials.json is valid.
     /// Refresh and write it to file.
     await refreshCredentials(credentials!);

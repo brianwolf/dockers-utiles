@@ -21,8 +21,8 @@ So the self-hosted pub server should have its own auth flow. unpub is using Goog
 Before running `unpub_auth`, configure:
 
 ```bash
-export UNPUB_AUTH_GOOGLE_CLIENT_ID="your-google-client-id"
-export UNPUB_AUTH_GOOGLE_CLIENT_SECRET="your-google-client-secret"
+export GOOGLE_CLIENT_ID="your-google-client-id"
+export GOOGLE_CLIENT_SECRET="your-google-client-secret"
 ```
 
 ### Overview
