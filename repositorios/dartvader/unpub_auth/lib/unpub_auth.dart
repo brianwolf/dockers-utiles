@@ -60,8 +60,12 @@ Future<void> migrate(Object? args) async {
     exit(1);
   }
 
-  final isValid =
-      oauth2.Credentials.fromJson(await File(args).readAsString()).refreshToken != null && oauth2.Credentials.fromJson(await File(args).readAsString( )).refreshToken!.isNotEmpty;
+  final isValid = oauth2.Credentials.fromJson(await File(args).readAsString())
+              .refreshToken !=
+          null &&
+      oauth2.Credentials.fromJson(await File(args).readAsString())
+          .refreshToken!
+          .isNotEmpty;
   if (isValid) {
     await File(args).copy(Utils.credentialsFilePath);
     Utils.stdoutPrint(
@@ -73,10 +77,11 @@ Future<void> migrate(Object? args) async {
 Future<void> getToken() async {
   final credentials = await readCredentialsFromLocal();
 
-  if (credentials?.refreshToken != null && credentials!.refreshToken!.isNotEmpty) {
+  if (credentials?.refreshToken != null &&
+      credentials!.refreshToken!.isNotEmpty) {
     /// unpub-credentials.json is valid.
     /// Refresh and write it to file.
-    await refreshCredentials(credentials!);
+    await refreshCredentials(credentials);
   } else {
     /// unpub-credentials.json is not exist or invalid.
     /// We should get a new Credentials file.

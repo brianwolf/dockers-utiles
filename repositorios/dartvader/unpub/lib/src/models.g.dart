@@ -48,17 +48,6 @@ UnpubPackage _$UnpubPackageFromJson(Map<String, dynamic> json) => UnpubPackage(
       json['download'] as int?,
     );
 
-Map<String, dynamic> _$UnpubPackageToJson(UnpubPackage instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'versions': instance.versions,
-      'private': instance.private,
-      'uploaders': instance.uploaders,
-      'createdAt': identity(instance.createdAt),
-      'updatedAt': identity(instance.updatedAt),
-      'download': instance.download,
-    };
-
 UnpubQueryResult _$UnpubQueryResultFromJson(Map<String, dynamic> json) =>
     UnpubQueryResult(
       json['count'] as int,
@@ -66,9 +55,3 @@ UnpubQueryResult _$UnpubQueryResultFromJson(Map<String, dynamic> json) =>
           .map((e) => UnpubPackage.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
-
-Map<String, dynamic> _$UnpubQueryResultToJson(UnpubQueryResult instance) =>
-    <String, dynamic>{
-      'count': instance.count,
-      'packages': instance.packages,
-    };
