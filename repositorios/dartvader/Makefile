@@ -5,7 +5,7 @@ stop:
 	docker compose down
 
 login:
-	dart run unpub_auth/bin/unpub_auth.dart login
+	dart run dartvader_auth/bin/dartvader_auth.dart login
 
 token:
-	dart run unpub_auth/bin/unpub_auth.dart get
+	dart run dartvader_auth/bin/dartvader_auth.dart get

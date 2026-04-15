@@ -4,7 +4,6 @@ Repositorio self-hosted para almacenar librerias de Dart
 
 ![alt](assets/dartvader.png)
 
-
 ## Levantar con Docker Compose
 
 Desde `repositorios/dartvader`:
@@ -16,7 +15,7 @@ docker compose up -d --build
 Servicios levantados:
 
 - `mongo`: base de datos MongoDB.
-- `unpub`: servidor privado de paquetes en `http://localhost:4000`.
+- `dartvader`: servidor privado de paquetes en `http://localhost:4000`.
 
 Parar y borrar contenedores:
 
@@ -35,9 +34,9 @@ docker compose down
 ### Instrucciones
 
 1) Generar un token de Google oauth2 - [Link de como hacerlo](https://developers.google.com/identity/protocols/oauth2)
-    
+
     - Dentro de Google cloud hay que crear un proyecto, crear una aplicacion y recien despues se crea el client id y client secret
-    
+
     - Luego de eso hay que habilitar redirects uris y origin para que la aplicacion pueda funcionar
 
     ![alt](assets/google-cloud.png)
@@ -62,14 +61,14 @@ docker compose down
     ```
 
 5) Configurar el archivo `pubspec.yaml` en el repo con la libreria a subir
-    
+
     ```bash
     name: your_package
     version: 1.0.0
     publish_to: http://localhost:4000/
     ```
 
-5) Subir la libreria
+6) Subir la libreria
 
     En el repo de la libreria ejecutar
 
