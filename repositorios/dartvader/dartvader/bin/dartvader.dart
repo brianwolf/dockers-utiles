@@ -64,6 +64,6 @@ main(List<String> args) async {
             @   @@@@@@@@@@@@@@@@@@   @            
             @@@@@                @@@@@            
 
-  CHAN CHAN CHAN, TUN DAH RUN, TUN DAH RUN..!!!
+  CHAN CHAN CHAN, TUN DAH DUN, TUN DAH DUN..!!!
   """);
 }

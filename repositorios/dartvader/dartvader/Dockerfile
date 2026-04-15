@@ -29,4 +29,4 @@ RUN mkdir -p /data/dartvader-packages
 
 EXPOSE 4000
 
-CMD ["/bin/bash", "-c", "/app/bin/dartvader --host 0.0.0.0 --port 4000 --database $UNPUB_MONGO_URI"]
+CMD ["/bin/bash", "-c", "/app/bin/dartvader --host 0.0.0.0 --port 4000 --database $MONGO_URI"]

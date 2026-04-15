@@ -1,8 +1,7 @@
 services:
   mongo:
-
     image: mongo:7
-    container_name: dartvader-mongo
+    container_name: mongo
     restart: unless-stopped
     environment:
       MONGO_INITDB_DATABASE: dart_pub
@@ -20,7 +19,7 @@ services:
     depends_on:
       - mongo
     environment:
-      UNPUB_MONGO_URI: mongodb://mongo:27017/dart_pub
+      MONGO_URI: mongodb://mongo:27017/dart_pub
     ports:
       - "4000:4000"
     volumes:
