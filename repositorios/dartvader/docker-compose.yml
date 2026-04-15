@@ -21,13 +21,6 @@ services:
       - mongo
     environment:
       UNPUB_MONGO_URI: mongodb://mongo:27017/dart_pub
-    command:
-      - --host
-      - 0.0.0.0
-      - --port
-      - "4000"
-      - --database
-      - mongodb://mongo:27017/dart_pub
     ports:
       - "4000:4000"
     volumes:

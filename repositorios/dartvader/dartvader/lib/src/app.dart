@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:shelf/shelf.dart' as shelf;
 import 'package:shelf/shelf_io.dart' as shelf_io;
@@ -131,7 +132,8 @@ class App {
     return server;
   }
 
-  Map<String, dynamic> _versionToJson(DartvaderVersion item, shelf.Request req) {
+  Map<String, dynamic> _versionToJson(
+      DartvaderVersion item, shelf.Request req) {
     var name = item.pubspec['name'] as String;
     var version = item.version;
     return {
@@ -287,11 +289,10 @@ class App {
       var pubspecYaml = utf8.decode(pubspecArchiveFile.content);
       var pubspec = loadYamlAsMap(pubspecYaml)!;
 
-      if (uploadValidator != null) {
-        await uploadValidator!(pubspec, uploader);
-      }
+      // if (uploadValidator != null) {
+      //   await uploadValidator!(pubspec, uploader);
+      // }
 
-      // TODO: null
       var name = pubspec['name'] as String;
       var version = pubspec['version'] as String;
 
@@ -568,8 +569,8 @@ class App {
 
         var color = latest.major == 0 ? 'orange' : 'blue';
 
-        return shelf.Response.found(
-            _getBadgeUrl('dartvader', latest.toString(), color, queryParameters));
+        return shelf.Response.found(_getBadgeUrl(
+            'dartvader', latest.toString(), color, queryParameters));
       case 'd':
         return shelf.Response.found(_getBadgeUrl(
             'downloads', package.download.toString(), 'blue', queryParameters));
