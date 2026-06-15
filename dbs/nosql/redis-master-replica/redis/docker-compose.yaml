@@ -1,0 +1,89 @@
+services:
+
+  logs:
+    container_name: logs
+    image: amir20/dozzle:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    network_mode: host
+
+  # -------------------------------------
+  # server1
+  # -------------------------------------
+  m1:
+    image: redis:8.2.6
+    container_name: m1
+    restart: unless-stopped
+    volumes:
+      - ./m1:/tmp/config
+    command: redis-server /tmp/config/redis.conf
+    network_mode: host
+
+  s1:
+    image: redis:8.2.6
+    container_name: s1
+    restart: unless-stopped
+    volumes:
+      - ./s1:/tmp/config
+    # esto lo hago porque redis modifica el archivo usando un usuario que rompe todo
+    command: |
+      bash -c "
+        mkdir -p /config && \
+        cp /tmp/config/* /config && \
+        redis-sentinel /config/redis.conf
+      "
+    network_mode: host
+    depends_on:
+      - m1
+      - b1
+
+  # -------------------------------------
+  # HUB02
+  # -------------------------------------
+  b1:
+    image: redis:8.2.6
+    container_name: b1
+    restart: unless-stopped
+    volumes:
+      - ./b1:/tmp/config
+    command: redis-server /tmp/config/redis.conf
+    network_mode: host
+
+  s2:
+    image: redis:8.2.6
+    container_name: s2
+    restart: unless-stopped
+    volumes:
+      - ./s2:/tmp/config
+    # esto lo hago porque redis modifica el archivo usando un usuario que rompe todo
+    command: |
+      bash -c "
+        mkdir -p /config && \
+        cp /tmp/config/** /config && \
+        redis-sentinel /config/redis.conf
+      "
+    network_mode: host
+    depends_on:
+      - m1
+      - b1
+
+  # -------------------------------------
+  # PROD02
+  # -------------------------------------
+  s3:
+    image: redis:8.2.6
+    container_name: s3
+    restart: unless-stopped
+    volumes:
+      - ./s3:/tmp/config
+    # esto lo hago porque redis modifica el archivo usando un usuario que rompe todo
+    command: |
+      bash -c "
+        mkdir -p /config && \
+        cp /tmp/config/* /config && \
+        redis-sentinel /config/redis.conf
+      "
+    network_mode: host
+    depends_on:
+      - m1
+      - b1
