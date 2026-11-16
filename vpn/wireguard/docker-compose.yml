@@ -1,0 +1,58 @@
+name: wireguard
+
+networks:
+  docker-net:
+    name: docker-net
+    external: true
+
+volumes:
+  config:
+  modules:
+
+services:
+  wireguard:
+    container_name: wireguard
+    hostname: wireguard
+    image: linuxserver/wireguard:1.0.20260223
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Argentina/Buenos_Aires
+      - SERVERURL=152.171.157.88
+      - PEERS=1
+      - ALLOWEDIPS=0.0.0.0/0
+      - LOG_CONFS=false
+    #   optionales
+    #   - SERVERPORT=51820
+    #   - PEERDNS=auto
+    #   - INTERNAL_SUBNET=10.13.13.0
+    #   - PERSISTENTKEEPALIVE_PEERS=10
+    volumes:
+      - config:/config
+      - modules:/lib/modules/
+    ports:
+      - 51820:51820/udp
+    networks:
+      - docker-net
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+
+  wireguard-ui:
+    container_name: wireguard-ui
+    image: ngoduykhanh/wireguard-ui:0.6.2
+    environment:
+      - LOGIN_PAGE=1
+      - BIND_ADDRESS=0.0.0.0:5000
+    volumes:
+      - config:/config
+    ports:
+      - 5000:5000
+    networks:
+      - docker-net
+    cap_add:
+      - NET_ADMIN
+    depends_on:
+      - wireguard
