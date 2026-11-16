@@ -19,21 +19,24 @@ services:
       - ./config/vpn.conf:/etc/openfortivpn/vpn.conf:ro
     restart: unless-stopped
 
-  tailscale:
-    image: tailscale/tailscale:latest
-    container_name: tailscale-exitnode
+  wireguard:
+    image: lscr.io/linuxserver/wireguard:latest
+    container_name: wireguard-gateway
     network_mode: "service:fortivpn"
     depends_on:
       - fortivpn
     cap_add:
       - NET_ADMIN
       - SYS_MODULE
-    devices:
-      - /dev/net/tun:/dev/net/tun
     environment:
-      - TS_AUTHKEY=tskey-auth-${TS_AUTHKEY}
-      - TS_HOSTNAME=gateway-argentina
-      - TS_EXTRA_ARGS=--advertise-exit-node
-      - TS_STATE_DIR=/var/lib/tailscale
-      - TS_USERSPACE=false
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Argentina/Buenos_Aires
+      - SERVERURL=lobezzzno.com.ar # <-- Pon aquí la IP pública o dominio DuckDNS de Argentina
+      - SERVERPORT=51820
+      - PEERS=paraguay
+      - PEERDNS=1.1.1.1
+      - ALLOWEDIPS=0.0.0.0/0
+    volumes:
+      - ./wireguard-config:/config
     restart: unless-stopped

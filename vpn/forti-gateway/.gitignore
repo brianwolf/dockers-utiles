@@ -1,0 +1,4 @@
+.env
+wireguard-config/
+
+config/vpn.conf
