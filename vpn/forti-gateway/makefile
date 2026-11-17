@@ -1,4 +1,5 @@
-.PHONY: up down restart logs auth clean help
+.PHONY: up down restart logs auth clean help wireguard
+.SILENT:
 
 ENV_FILE ?= .env
 DOCKER_COMPOSE := $(shell docker compose version >/dev/null 2>&1 && echo "docker compose" || echo "docker-compose")
@@ -30,4 +31,6 @@ logs: ## Muestra los logs en tiempo real de ambos servicios
 
 clean: ## Elimina contenedores, imágenes, estado de Tailscale y limpieza total
 	$(DOCKER_COMPOSE) down -v --rmi all
-	sudo rm -rf ./tailscale-state
+
+wireguard: ## Muestra la configuracion de coneccion para Wireguard
+	cat wireguard-config/peer_paraguay/peer_paraguay.conf
